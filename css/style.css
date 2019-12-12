@@ -1,0 +1,42 @@
+*{
+    
+}
+
+a.nav-link {
+    border-bottom: 5px solid #f1f1f1;
+    color: black;
+}
+
+a.nav-link.active {color: #787878;border-bottom: 5px solid #0099ff;padding-left: 0;padding-right: 0;}
+
+.icon i {
+    padding: 7px;
+    color: white;
+    border-radius: 50%;
+    background: #787878;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul.nav {
+    font-size: 14px;
+    padding: 20px 15px;
+}
+
+.top-bar li {
+    list-style-type: none;
+    float: left;
+    padding: 10px;
+}
+
+.top-bar {
+    background: #2e2e2e;
+    color: #9f9f9f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
