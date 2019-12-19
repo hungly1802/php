@@ -1,3 +1,4 @@
+
 function isEmail(emailStr)
 {
         var emailPat=/^(.+)@(.+)$/
@@ -53,6 +54,7 @@ function isEmail(emailStr)
 }
 $(document).ready(function()
 {   
+
    // $('#del_parent').on('click', function () {
         $('.table #del_parent').each(function() {
            
@@ -74,7 +76,7 @@ $(document).ready(function()
         var flag = true;
         // Username
         if (username == '' || username.length < 5){
-            $('#username_error').text('Tên đăng nhập phải lớn hơn 5 ký tự');
+            $('#username_error').text('Tên đăng nhập phải lớn hơn 8 ký tự');
             flag = false;
         }
         else{
@@ -102,44 +104,3 @@ $(document).ready(function()
         return flag;
     });
 });
-// $(document).ready(function()
-// {
-//     $('#form_add').submit(function(){
-//         alert('da ok ');
-//         // BƯỚC 1: Lấy dữ liệu từ form
-//         var username    = $.trim($('#username1').val());
-//         var password    = $.trim($('#password1').val());
-//         var email       = $.trim($('#email1').val());
-//         // BƯỚC 2: Validate dữ liệu
-//         // Biến cờ hiệu
-//         var flag = true;
-//         // Username
-//         if (username == '' || username.length < 5){
-//             $('#username_error').text('Tên đăng nhập phải lớn hơn 5 ký tự');
-//             flag = false;
-//         }
-//         else{
-//             $('#username_error').text('');
-//         }
- 
-//         // Password
-//         if (password.length <= 0){
-//             $('#password_error').text('Bạn phải nhập mật khẩu');
-//             flag = false;
-//         }
-//         else{
-//             $('#password_error').text('');
-//         }
- 
-//         // Email
-//         if (!isEmail(email) || email.length < 0){
-//             $('#email_error').text('Email không được để trống và phải đúng định dạng');
-//             flag = false;
-//         }
-//         else{
-//             $('#email_error').text('');
-//         }
- 
-//         return flag;
-//     });
-// });

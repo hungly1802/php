@@ -1,11 +1,12 @@
 <?php
 require_once("sql_connect.php");
-var_dump($_GET);
+var_dump($_POST['id']);
 // sql to delete a record
-$sql = "DELETE FROM user_info WHERE id='".$_GET['id']."' ";
+$sql = "DELETE FROM user_info WHERE id='".$_POST['id']."' ";
 if ($connect->query($sql) === TRUE){
 
-    header("location: welcome.php");
+   echo "finish del";
 }
+
 require_once("sql_disconnect.php");
 ?>

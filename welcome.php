@@ -42,14 +42,14 @@
             if (!empty($data)) {
                 foreach ($data as $value) { ?>
                    
-                <tr role="row">         
+                <tr id="<?=$value['id']?>" role="row">         
                    
                     <td><?=$value['id']?></td>
                     <td><?=$value['username'] ?></td>
                     <td><?=$value['email']?></td>
                     
-                    <td><a class="btn btn-info" href="edit.php?id=<?=$value['id']?>">Edit</a></td>
-                    <td><a id="del_parent" class="btn btn-info" href="process_del.php?id=<?=$value['id']?>" data-toggle="modal" data-target="#btn_del"> Delete</a></td>
+                    <td><a class="edit btn btn-info" data="<?=$value['id']?>" href="edit.php?id=<?=$value['id']?>">Edit</a></td>
+                    <td><a class="remove btn btn-info" data="<?=$value['id']?>"> Delete</a></td>
                     
                 </tr>
                 <?php 
@@ -93,7 +93,7 @@
     <!-- popop delete record confirm yes/no -->
     <div id="btn_del" class="modal fade bg-white m-auto modal-sm text-center p-3" role="dialog">                
         <p>Bạn có chắc chắn muốn xóa ?</p>
-        <a id="del_kid" class="btn btn-info"  href="process_del.php?id=<?=$value['id']?>"> Delete</a>
+        <a id="del_kid" class="btn btn-info" data="<?=$value['id']?>"  href="process_del.php?id=<?=$value['id']?>"> Delete</a>
         <a class="btn btn-info" href="welcome.php"> Cancel</a>
     </div>
     <!-- Optional JavaScript -->
@@ -102,6 +102,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <script src="test.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(".remove").click(function(){
+        
+        if(confirm('Are you sure to remove this record ?'))
+        {
+        var id = $(this).attr("data"); 
+        $(this).parent().parent().remove();
+        $.ajax({
+               url: 'process_del.php',
+               type: 'POST',
+               data: {id: id},
+               error: function() {
+                  alert('Something is wrong');
+               },
+               success: function(data) {
+
+                    // console.log($(this).html()) 
+                //    $('tr #id').remove();
+                    // $(this).parent('td').parent('tr').remove();
+                    // console.log($(this).parent(tr))
+                    // location.reload();
+
+                    alert("Record removed successfully");  
+               }
+            });
+ 
+        }
+    });
+
+
+</script>
 </body>
 
 </html>
